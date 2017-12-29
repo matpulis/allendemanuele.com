@@ -1,0 +1,46 @@
+@import 'libs/_simplebar.scss';
+
+@import 'components/_vue-tranistions';
+@import 'components/_buttons';
+@import 'components/_panels';
+@import 'components/_grid';
+@import 'components/_tables';
+@import 'components/_typography';
+
+
+*{
+   box-sizing: border-box;
+   outline: none !important;
+}
+
+html, body, #app{
+   line-height: 1.15;
+   margin: 0;
+   width: 100%;
+   height: 100%;
+   font-size: 0.95rem;
+   font-family: 'Lato', Helvetica, sans-serif;
+   color: #676a6c;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   text-rendering: optimizeLegibility !important;
+   overflow: hidden;
+   background: #fff;
+}
+
+a{
+  text-decoration: none;
+  cursor: pointer;
+  color: #1fc8db;
+  transition: all 0.3s ease;
+}
+
+p{
+  line-height: 20px;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
