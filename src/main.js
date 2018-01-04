@@ -37,3 +37,11 @@ new Vue({
     router: router,
     render: h => h(MainApp)
 })
+
+
+
+//Assets
+import logoLoading from "./assets/images/logo-loading.png";
+import logoMenu from "./assets/images/logo-menu.png";
+import logoHeader from "./assets/images/logo-header.png";
+import AllenFull from "./assets/images/allen-full.png";
