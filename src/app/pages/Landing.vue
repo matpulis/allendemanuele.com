@@ -4,10 +4,10 @@
       <article>
         <h1>UI & UX Designer</h1>
         <p>Hey there, I’m Allen - an enthusiastic user interface and experience designer currently shaping the future of network communications, network security and e-learning experiences at GFI Software. I design with a user-centered approach in the aim of creating thoughtful experiences, and have done so with companies including Aurea, Kerio & Exinda. My personal mission is to create effortless user experiences and design delightful digital products.</p>
-        <a class="article-cta">PORTFOLIO</a>
+        <router-link to="portfolio" class="article-cta">PORTFOLIO</router-link>
       </article>
       
-      <a class="btn-next-page">
+      <router-link to="portfolio"class="btn-next-page">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14px" height="8px" viewBox="0 0 14 8" version="1.1">
             <g id="3.-About-Me" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-182.000000, -898.000000)" stroke-linecap="square">
                 <g id="Group-6" transform="translate(160.000000, 872.000000)" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="0.5">
@@ -17,7 +17,7 @@
                 </g>
             </g>
         </svg>
-      </a>
+      </router-link>
     </div>
 
     <div class="page-right">

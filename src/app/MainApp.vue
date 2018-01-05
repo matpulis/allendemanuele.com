@@ -12,7 +12,9 @@
                 <main-header></main-header>
 
                 <div class="main-container">
-                    <router-view></router-view>
+                    <transition name="fade" mode="out-in">
+                        <router-view></router-view>
+                    </transition>
                 </div>
             </div>
         </transition>
@@ -48,7 +50,7 @@
 <style lang="scss">
     .wrapper{
         height: 100%;
-        display: table;
+        display: block;
         width: 100%;
 
         .main-app, .main-container{

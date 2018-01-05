@@ -1,7 +1,7 @@
 <template>
-    <div :class="['main-header', {'menu-open': menu_open}]">
+    <div :class="['main-header', {'menu-open': $store.state.menu_open}]">
         <transition name="fade-fast" mode="out-in">
-            <img key="1" v-if="menu_open" src="/dist/assets/images/logo-menu.png" alt="Allen.">
+            <img key="1" v-if="$store.state.menu_open" src="/dist/assets/images/logo-menu.png" alt="Allen.">
             <img key="2" v-else src="/dist/assets/images/logo-header.png" alt="Allen.">
         </transition>
 
@@ -10,17 +10,17 @@
             <div class="line-2"></div>
         </a>
 
-        <ul v-if="menu_open" class="main-menu">
+        <ul v-if="$store.state.menu_open" class="main-menu">
             <transition-group name="fade-left" mode="out-in">
-                <li key="1" v-if="show_menu_item > 0"><a>Home</a></li>
-                <li key="2" v-if="show_menu_item > 1"><a>Portfolio</a></li>
-                <li key="3" v-if="show_menu_item > 2"><a>Experience</a></li>
-                <li key="4" v-if="show_menu_item > 3"><a>About</a></li>
-                <li key="5" v-if="show_menu_item > 4"><a>Reach</a></li>
+                <li key="1" v-if="show_menu_item > 0"><router-link to="/">Home</router-link></li>
+                <li key="2" v-if="show_menu_item > 1"><router-link to="portfolio">Portfolio</router-link></li>
+                <li key="3" v-if="show_menu_item > 2"><router-link to="experience">Experience</router-link></li>
+                <li key="4" v-if="show_menu_item > 3"><router-link to="about">About</router-link></li>
+                <li key="5" v-if="show_menu_item > 4"><router-link to="reach">Reach</router-link></li>
             </transition-group>
         </ul>
 
-        <div v-if="menu_open" class="quote">
+        <div v-if="$store.state.menu_open" class="quote">
             <p>Creativity is just</p>
             <p>connecting things.</p>
             <p><strong>- Steve Jobs</strong></p>
@@ -36,7 +36,6 @@
         },
         data () {
             return {
-                menu_open : false,
                 show_menu_item: 0,
             }
         },
@@ -46,7 +45,7 @@
         methods: {
             toggle_menu: function(){
                 var self = this;
-                if(self.menu_open){
+                if(self.$store.state.menu_open){
                     self.show_menu_item = 0;
                 }
                 else{
@@ -57,7 +56,7 @@
                     }
                 }
 
-                self.menu_open = !self.menu_open;
+                self.$store.state.menu_open = !self.$store.state.menu_open;
             }
         },
         mounted(){

@@ -24,12 +24,16 @@ Vue.http.options.xhr = {withCredentials: true};
 
 //Guard after each request check token state
 router.afterEach((to, from) => { 
-
+    store.state.menu_open = false;
 })
 
 //Directives
     import './app/directives/v-simplebar.js'
 
+//Components 
+    import MainFooter from './app/components/Mainfooter.vue'
+    Vue.component('main-footer', MainFooter);
+    
 //Init App
 new Vue({
     el: '#app',
@@ -45,3 +49,5 @@ import logoLoading from "./assets/images/logo-loading.png";
 import logoMenu from "./assets/images/logo-menu.png";
 import logoHeader from "./assets/images/logo-header.png";
 import AllenFull from "./assets/images/allen-full.png";
+import GfiLogo from "./assets/images/gfi-logo.png";
+import McastLogo from "./assets/images/mcast-logo.png";
