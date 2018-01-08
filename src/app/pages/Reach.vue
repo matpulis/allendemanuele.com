@@ -66,18 +66,6 @@
                         </a> 
                     </div>
                 </article>
-                
-                <a class="btn-next-page">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14px" height="8px" viewBox="0 0 14 8" version="1.1">
-                        <g id="3.-About-Me" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-182.000000, -898.000000)" stroke-linecap="square">
-                            <g id="Group-6" transform="translate(160.000000, 872.000000)" fill="#000000" fill-rule="nonzero" stroke="#000000" stroke-width="0.5">
-                                <g id="arrows" transform="translate(29.000000, 30.000000) rotate(90.000000) translate(-29.000000, -30.000000) translate(25.500000, 23.500000)">
-                                    <polygon id="Shape" points="0.786257479 0 0 0.87042897 5.38156851 6.50021737 0 12.1284842 0.786030419 13 7 6.50021737"/>
-                                </g>
-                            </g>
-                        </g>
-                    </svg>
-                </a>
             </div>
 
             <div class="page-right">
@@ -96,8 +84,8 @@
                     <div class="form-group clearfix">
                         <div class="form-group-section">
                             <label>Subject</label>
-                            <button class="select-trigger" type="button">
-                                <span>Project Request</span>
+                            <button @click="open_subject_menu()" class="select-trigger" type="button">
+                                <span>{{contact_form.subject}}</span>
                                 <svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <g id="4.-Contact" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1139.000000, -413.000000)" opacity="0.7">
                                         <g id="arrows" transform="translate(1144.000000, 416.000000) rotate(90.000000) translate(-1144.000000, -416.000000) translate(1141.000000, 411.000000)" fill="#000000" fill-rule="nonzero">
@@ -106,11 +94,30 @@
                                     </g>
                                 </svg>
                             </button>
+
+                            <transition name="fade-fast">
+                                <div v-if="show_subject_menu" class="full-screen-menu">
+                                    <button @click="close_subject_menu()" class="btn-close-menu" type="button"><div class="line-1"></div> <div class="line-2"></div></button>
+
+                                    <transition name="fade-scale">
+                                        <div v-if="show_subject_options" class="menu-content">
+                                            
+                                                <h2>Select Your Subject</h2>
+                                                <ul>
+                                                    <li><a @click="contact_form.subject = 'Project Request'" :class="[{'active': contact_form.subject == 'Project Request'}]">Project Request</a></li>
+                                                    <li><a @click="contact_form.subject = 'Job Opportunity'" :class="[{'active': contact_form.subject == 'Job Opportunity'}]">Job Opportunity</a></li>
+                                                    <li><a @click="contact_form.subject = 'Other'" :class="[{'active': contact_form.subject == 'Other'}]">Other</a></li>
+                                                </ul>
+                                            
+                                        </div>
+                                    </transition>
+                                </div>
+                            </transition>
                         </div>
                         <div class="form-group-section">
                             <label>Budget</label>
-                            <button class="select-trigger" type="button">
-                                <span>Project Budget</span>
+                            <button @click="open_budget_menu()" class="select-trigger" type="button">
+                                <span>{{contact_form.budget}}</span>
                                 <svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                     <g id="4.-Contact" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1139.000000, -413.000000)" opacity="0.7">
                                         <g id="arrows" transform="translate(1144.000000, 416.000000) rotate(90.000000) translate(-1144.000000, -416.000000) translate(1141.000000, 411.000000)" fill="#000000" fill-rule="nonzero">
@@ -119,6 +126,26 @@
                                     </g>
                                 </svg>
                             </button>
+
+                            <transition name="fade-fast">
+                                <div v-if="show_budget_menu" class="full-screen-menu">
+                                    <button @click="close_budget_menu()" class="btn-close-menu" type="button"><div class="line-1"></div> <div class="line-2"></div></button>
+
+                                    <transition name="fade-scale">
+                                        <div v-if="show_budget_options" class="menu-content">
+                                            <h2>Select Your Budget</h2>
+                                            <ul>
+                                                <li><a @click="contact_form.budget = '€5,000 - €10,000'" :class="[{'active': contact_form.budget == '€5,000 - €10,000'}]">€5,000 - €10,000</a></li>
+                                                <li><a @click="contact_form.budget = '€10,000 - €50,000'" :class="[{'active': contact_form.budget == '€10,000 - €50,000'}]">€10,000 - €50,000</a></li>
+                                                <li><a @click="contact_form.budget = '€50,000 - €100,000'" :class="[{'active': contact_form.budget == '€50,000 - €100,000'}]">€50,000 - €100,000</a></li>
+                                                <li><a @click="contact_form.budget = '€100,000 - €200,000'" :class="[{'active': contact_form.budget == '€100,000 - €200,000'}]">€100,000 - €200,000</a></li>
+                                                <li><a @click="contact_form.budget = '€200,000 - €500,000'" :class="[{'active': contact_form.budget == '€200,000 - €500,000'}]">€200,000 - €500,000</a></li>
+                                                <li><a @click="contact_form.budget = '€500,000 +'" :class="[{'active': contact_form.budget == '€500,000 +'}]">€500,000 +</a></li>
+                                            </ul>
+                                        </div>
+                                    </transition>
+                                </div>
+                            </transition>
                         </div>
                     </div>
 
@@ -126,6 +153,8 @@
                         <label>Message</label>
                         <textarea placeholder="Write message here"></textarea>
                     </div>
+
+                    <a type="submit" class="article-cta">SEND</a>
                 </form>
             </div>
         </div>
@@ -142,12 +171,56 @@ export default {
 
   data () {
     return {
-       
+        contact_form:{
+            subject: 'Project Request',
+            budget: '€5,000 - €10,000'
+        },
+
+        show_subject_menu: false,
+        show_subject_options: false,
+        
+        show_budget_menu: false,
+        show_budget_options: false,
     }
   },
-  methods: {
-   
-  },
+    watch: {
+        contact_form: {
+            deep: true,
+            handler: function(){
+                var self = this;
+                if(self.show_subject_menu || self.show_budget_menu){
+                    self.show_subject_menu = false;
+                    self.show_budget_menu = false;
+                    setTimeout(function(){ 
+                        self.show_subject_options = false; 
+                        self.show_budget_options = false; 
+                    }, 100);
+                }
+            }
+        }
+    },
+    methods: {
+        open_subject_menu: function(){
+           var self = this;
+            self.show_subject_menu = true;
+            setTimeout(function(){ self.show_subject_options = true; }, 200);
+        },
+        open_budget_menu: function(){
+           var self = this;
+            self.show_budget_menu = true;
+            setTimeout(function(){ self.show_budget_options = true; }, 200);
+        },
+        close_subject_menu: function(){
+            var self = this;
+            self.show_subject_menu = false;
+            setTimeout(function(){ self.show_subject_options = false; }, 100);
+        },
+        close_budget_menu: function(){
+            var self = this;
+            self.show_budget_menu = false;
+            setTimeout(function(){ self.show_budget_options = false; }, 100);
+        },
+    },
   mounted(){
     var self = this;
 
@@ -159,10 +232,13 @@ export default {
 
     #reach-page{
         .scroll-container{
-            margin-top: 130px;
             height: calc(100% - 130px);
             overflow-x: hidden;
             overflow-y: auto;
+            margin-top: 130px;
+            .page-right{
+                padding: 0 10% 40px 0 !important;
+            }
         }
         .social-container{
             a{
@@ -173,9 +249,13 @@ export default {
         form{
             .form-group{
                 padding-bottom: 40px;
+                padding-right: 40px;
                 .form-group-section{
                     float: left;
                     width: 50%;
+                    &:first-child{
+                        padding-right: 40px;
+                    }
                 }
                 label{
                     display: block;
@@ -185,16 +265,118 @@ export default {
                     letter-spacing: 0;
                     line-height: 25px;
                 }
-                input[type="text"], .select-trigger{
+                input[type="text"], input[type="email"], .select-trigger{
                     display: block;
+                    width: 100%;
+                    background: none;
                     border: 0;
                     border-bottom: 1px solid rgba(0,0,0,0.5);
-                    line-height: 30px;
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 14px;
+                    text-align: left;
+                    padding: 0;
                 }
                 textarea{
-                    border: 1px solid #000000;
+                    margin-top: 10px;
+                    border: 1px solid rgba(0,0,0,0.5);
                     width: 100%;
                     height: 240px;
+                    font-size: 14px;
+                    font-family: Helvetica;
+                    padding: 20px
+                }
+                .select-trigger{
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    &:hover{
+                        background: rgba(0,0,0,0.02);
+                    }
+                    span{
+                        white-space: nowrap;
+                        width: calc(100% - 40px);
+                        overflow: hidden;
+                        display: inline-block;
+                        text-overflow: ellipsis;
+                    }
+                    svg {
+                        float: right;
+                        margin-right: 15px;
+                        margin-top: 17px;
+                    }
+                }
+                .full-screen-menu {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.8);
+                    display: table;
+                    .menu-content{
+                        vertical-align: middle;
+                        display: table-cell;
+                        text-align: center;
+                        h2{
+                            font-family: RobotoSlab;
+                            font-weight: 100;
+                            font-size: 30px;
+                            color: #FFFFFF;
+                            letter-spacing: 0;
+                            line-height: 20px;
+                        }
+                        ul{
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
+                            margin-top: 40px;
+                            li{
+                                a{
+                                    color: rgba(255, 255, 255, 0.5);
+                                    font-size: 16px;
+                                    font-weight: 300;
+                                    letter-spacing: 0;
+                                    padding: 10px 0;
+                                    margin-bottom: 10px;
+                                    border-bottom: 1px solid transparent;
+                                    transition: all 0.3s ease;
+                                    display: inline-block;
+                                    &:hover{
+                                        border-color: rgba(255, 255, 255, 0.5);   
+                                    }
+                                    &.active{
+                                        color: #FFFFFF;
+                                        border-color: #ffffff;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .btn-close-menu{
+                        position: absolute;
+                        top: 60px;
+                        right: 60px;
+                        background: none;
+                        border: 0;
+                        width: 35px;
+                        height: 35px;
+                        cursor: pointer;
+                        >div{
+                            position: absolute;
+                            width: 30px;
+                            height: 1px;
+                            left: 0;
+                            background: #ffffff;
+                            &.line-1{
+                                transform: rotate(-45deg);
+                                top: 14px;
+                            }
+                            &.line-2{
+                                bottom: 20px;
+                                transform: rotate(45deg);
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -4,8 +4,10 @@
         <transition name="fade" mode="out-in">
             
             <div v-if="show_loading" key="1" class="loader">
-                <img src="/dist/assets/images/logo-loading.png" alt="Allen Demanuele Logo">
-                <span class="surname">DEMANUELE</span>
+                <div class="loader-content">
+                    <img src="/dist/assets/images/logo-loading.png" alt="Allen Demanuele Logo">
+                    <span class="surname">DEMANUELE</span>
+                </div>  
             </div>
 
             <div v-else key="2" class="main-app">
@@ -60,14 +62,12 @@
     }
 
     .loader{
-        position: relative;
+        position: absolute;
         z-index: 0;
         background: #0B0B0B;
         height: 100%;
         width: 100%;
-        text-align: center;
-        display: table-cell;
-        vertical-align: middle;
+        display: table;
         .surname{
             font-family: Gotham;
             font-size: 150px;
@@ -75,10 +75,16 @@
             color: #000000;
             letter-spacing: 0;
         }
-        >img{
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            animation: fade infinite 2s linear;
+        .loader-content{
+            position: relative;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+            >img{
+                position: absolute; top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+                animation: fade infinite 2s linear;
+            }
         }
     }
 </style>

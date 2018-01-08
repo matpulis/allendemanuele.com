@@ -50,6 +50,15 @@
   opacity: 0;
 }
 
+//Fade Scale
+.fade-scale-enter-active, .fade-scale-leave-active {
+  transition: all 0.5s ease !important;
+}
+.fade-scale-enter, .fade-scale-leave-to {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
 
 //Page Out In
 .page-out-in-enter-active, .page-out-in-leave-active {
