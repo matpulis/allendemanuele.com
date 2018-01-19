@@ -32,9 +32,24 @@ Home Page
 - Animate from loading to home as per https://chaptr.studio
 - Image align to the right and change to even spacing
 - Add animation to content upon load
+- Change CTA to Experience
+
+Portfolio page and About Page
+- Add contained scale animation to images
+
+Reach Page
+- Remove input labels and change placeholders
+
+Reach From Select
+- On hover add expanding bottom line left-to-right
+- Darken the background 0.95
 
 Main Menu
 - Change toggle button line thickness to 1px
+- Add menu animation as per https://chaptr.studio
+- Reduce spacing in quote (steve)
+- Remove fixed state
 
 Main CTA Link
 - Change animation extend line and darken
+
