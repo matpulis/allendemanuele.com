@@ -26,6 +26,15 @@ Loader
 - Slide in dark background from the right
 - Remove DEMANUELE
 - Allen logo fades in dead center
+- Remove Gotham font
 
-Home
+Home Page
 - Animate from loading to home as per https://chaptr.studio
+- Image align to the right and change to even spacing
+- Add animation to content upon load
+
+Main Menu
+- Change toggle button line thickness to 1px
+
+Main CTA Link
+- Change animation extend line and darken
