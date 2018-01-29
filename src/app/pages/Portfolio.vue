@@ -73,18 +73,19 @@ export default {
         display: inline-block;
         width: 400px;
         height: 200px;
-        opacity: 0.8;
         margin-right: 30px;
         margin-bottom: 30px;
         border:1px solid rgba(50,50,50,0.1);
-        transition: all 0.3s ease;
-        &:hover{
+        overflow: hidden;
+        &:hover img{
           opacity: 1;
           transform: scale(1.03);
         }
         >img{
           width: 100%;
           height: 100%;
+          opacity: 0.8;
+          transition: all 0.4s ease;
         }
       }
     }

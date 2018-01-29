@@ -1,14 +1,18 @@
 <template>
     <div :class="['main-header', {'menu-open': $store.state.menu_open}]">
-        <transition name="fade-fast" mode="out-in">
-            <img key="1" v-if="$store.state.menu_open" src="/dist/assets/images/logo-menu.png" alt="Allen.">
-            <img key="2" v-else src="/dist/assets/images/logo-header.png" alt="Allen.">
-        </transition>
+        <div class="header-top">
+            <transition name="fade-fast" mode="out-in">
+                <router-link to="/">
+                    <img key="1" v-if="$store.state.menu_open" src="/dist/assets/images/logo-menu.png" alt="Allen.">
+                    <img key="2" v-else src="/dist/assets/images/logo-header.png" alt="Allen.">
+                </router-link>
+            </transition>
 
-        <a @click="toggle_menu()" class="btn-menu">
-            <div class="line-1"></div>
-            <div class="line-2"></div>
-        </a>
+            <a @click="toggle_menu()" class="btn-menu">
+                <div class="line-1"></div>
+                <div class="line-2"></div>
+            </a>
+        </div>
 
         <ul v-if="$store.state.menu_open" class="main-menu">
             <transition-group name="fade-left" mode="out-in">
@@ -72,33 +76,37 @@
         top: 0;
         left: 0;
         z-index: 1000;
-        padding-top: 40px;
-        padding-left: 10%;
-        width: 50%;
+        width: 100%;
         height: 70px;
         border-radius: 0 0 10px;
-        transition: all 0.5s;
+        transition: all 0.3s ease;
         overflow: hidden;
-        .btn-menu{
-            position: relative;
-            display: block;
-            float: right; 
-            width: 40px;
-            height: 20px;
-            >div{
-                position: absolute;
-                width: 25px;
-                height: 2px;
-                background: #000000;
-                left: 0;
-                transition: all 0.3s ease;
-                &.line-1{
-                    top: 0;
+        .header-top{
+            padding-top: 40px;
+            padding-left: 10%;
+            width: 50%;
+            height: 70px;
+            .btn-menu{
+                position: relative;
+                display: block;
+                float: right; 
+                width: 40px;
+                height: 20px;
+                >div{
+                    position: absolute;
+                    width: 25px;
+                    height: 1px;
+                    background: #000000;
+                    left: 0;
+                    transition: all 0.3s ease;
+                    &.line-1{
+                        top: 0;
+                    }
+                    &.line-2{
+                        bottom: 0;
+                    }
                 }
-                &.line-2{
-                   bottom: 0;
-                }
-           }
+            }
         }
 
         .main-menu{
@@ -107,7 +115,7 @@
             font-size: 60px;
             list-style: none;
             padding: 0;
-            margin: 10% 0 0 0;
+            margin: 10% 0 0 10%;
             li{
                 a{
                     position: relative;
@@ -185,6 +193,7 @@
             right: 40px;
             p{
                 font-size: 13px;
+                margin: 0;
                 opacity: 0.8;
                 color: #ffffff;
                 &:last-child{
@@ -199,12 +208,11 @@
             background: #0B0B0B;
             border-radius: 0;
             .btn-menu{
-                margin-right: 40px;
                 >div{
                     background: #ffffff;
                     &.line-1{
                         transform: rotate(-45deg);
-                        top: 9px;
+                        top: 10px;
                     }
                     &.line-2{
                         bottom: 9px;

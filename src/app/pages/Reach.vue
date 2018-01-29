@@ -72,18 +72,15 @@
                 <form>
                     <div class="form-group clearfix">
                         <div class="form-group-section">
-                            <label for="name">Name</label>
-                            <input id="name" type="text" placeholder="Your name here" required>
+                            <input id="name" type="text" placeholder="Your Name" required>
                         </div>
                         <div class="form-group-section">
-                            <label for="email">Email</label>
-                            <input id="email" type="email" placeholder="Your email address" required>
+                            <input id="email" type="email" placeholder="Your Email" required>
                         </div>
                     </div>
 
                     <div class="form-group clearfix">
                         <div class="form-group-section">
-                            <label>Subject</label>
                             <button @click="open_subject_menu()" class="select-trigger" type="button">
                                 <span>{{contact_form.subject}}</span>
                                 <svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -115,7 +112,6 @@
                             </transition>
                         </div>
                         <div class="form-group-section">
-                            <label>Budget</label>
                             <button @click="open_budget_menu()" class="select-trigger" type="button">
                                 <span>{{contact_form.budget}}</span>
                                 <svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -172,7 +168,7 @@ export default {
   data () {
     return {
         contact_form:{
-            subject: 'Project Request',
+            subject: 'Choose Subject...',
             budget: '€5,000 - €10,000'
         },
 
@@ -257,14 +253,6 @@ export default {
                         padding-right: 40px;
                     }
                 }
-                label{
-                    display: block;
-                    opacity: 0.7;
-                    font-size: 16px;
-                    color: #000000;
-                    letter-spacing: 0;
-                    line-height: 25px;
-                }
                 input[type="text"], input[type="email"], .select-trigger{
                     display: block;
                     width: 100%;
@@ -309,9 +297,10 @@ export default {
                     position: fixed;
                     top: 0;
                     left: 0;
+                    z-index: 1500;
                     width: 100%;
                     height: 100%;
-                    background: rgba(0,0,0,0.8);
+                    background: rgba(0,0,0,0.95);
                     display: table;
                     .menu-content{
                         vertical-align: middle;
@@ -341,8 +330,27 @@ export default {
                                     border-bottom: 1px solid transparent;
                                     transition: all 0.3s ease;
                                     display: inline-block;
-                                    &:hover{
-                                        border-color: rgba(255, 255, 255, 0.5);   
+                                    position: relative;
+                                    &:after, &:before{
+                                        display: block;
+                                        width: 0;
+                                        height: 1px;
+                                        background: #ffffff;
+                                        content: " ";
+                                        bottom: 0;
+                                        position: absolute;
+                                        transition: width 0.3s ease;
+                                    }
+                                    &:after{
+                                        left: 50%;
+                                    }
+                                    &:before{
+                                        right: 50%;     
+                                    }
+                                    &:hover:not(.active){
+                                        &:after, &:before{
+                                            width: 50%; 
+                                        }
                                     }
                                     &.active{
                                         color: #FFFFFF;
@@ -355,12 +363,13 @@ export default {
                     .btn-close-menu{
                         position: absolute;
                         top: 60px;
-                        right: 60px;
+                        right: 50%;
                         background: none;
                         border: 0;
                         width: 35px;
                         height: 35px;
                         cursor: pointer;
+                        transform: translateX(50%);
                         >div{
                             position: absolute;
                             width: 30px;

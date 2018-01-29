@@ -7,7 +7,9 @@
 
         <div class="instagram-container">
           <transition-group name="fade">
-            <img :key="index" v-for="(image, index) in insta_feed" :src="image.url" alt="Instagram Image" title="Instagram Image"></a>
+            <div :key="index" v-for="(image, index) in insta_feed" class="image-container">
+                <img :src="image.url" alt="Instagram Image" title="Instagram Image">
+            </div>
           </transition-group>
         </div>
 
@@ -78,11 +80,23 @@ export default {
       .instagram-container{
         height: 238px;
         margin: 40px 0 20px;
-        img{
-          width: 238px;
-          height: 238px;
-          margin-right: 30px;
+        .image-container{
+            margin-right: 30px;
+            height: 238px;
+            width: 238px;
+            overflow: hidden;
+            &:hover img{
+                opacity: 1;
+                transform: scale(1.03);
+            }
+            img{
+                opacity: 0.8;
+                width: 238px;
+                height: 238px;
+                transition: all 0.4s ease;
+            }
         }
+        
       }
     }
   }
